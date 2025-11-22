@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fancy Gradient Project Cards</title>
+
+  <link rel="stylesheet" href="./ProjectCard.css" />
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">HM</div>
+        <h1 class="brand-name">PROJECT</h1>
+      </div>
+
+      <nav class="nav">
+        <a class="nav-item active" href="#">Dashboard</a>
+        <a class="nav-item" href="#">Projects</a>
+        <a class="nav-item" href="#">Teams</a>
+        <a class="nav-item" href="#">Settings</a>
+      </nav>
+
+      <button class="new-btn">+ New Project</button>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <header class="topbar">
+        <input type="search" class="search" placeholder="Search projects..." />
+        <div class="avatar">HM</div>
+      </header>
+
+      <section class="content">
+        <h2 class="section-title">Featured Projects</h2>
+
+        <!-- CARDS GRID -->
+        <div class="cards-grid">
+
+          <!-- TASK MANAGER CARD -->
+          <a href="#" 
+             class="card gradient-1"
+             data-title="Task Manager App"
+             data-desc="A clean productivity tool designed to help users organize their daily workflow. It allows you to create, edit, prioritize, and track tasks effortlessly. The interface focuses on simplicity and speed to reduce distractions. Perfect for students, teams, and anyone who needs a structured day.">
+            <img class="card-thumb" src="images2.jpeg" alt="Task Manager App" />
+            <div class="card-body">
+              <h3>Task Manager App</h3>
+              <p>Organize your workflow easily.</p>
+              <div class="tags">
+                <span class="tag">Productivity</span>
+                <span class="tag">UI</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- WEATHER APP CARD -->
+          <a href="#" 
+             class="card gradient-2"
+             data-title="Weather App"
+             data-desc="A lightweight weather dashboard that provides real-time temperature and forecasts. It delivers accurate data with a clean and minimal interface. Users can quickly check humidity, wind, and location-based reports. Built for speed and clarity, ideal for daily updates.">
+            <img class="card-thumb" src="image1.jpg" alt="Weather App" />
+            <div class="card-body">
+              <h3>Weather App</h3>
+              <p>Live forecasts in one place.</p>
+              <div class="tags">
+                <span class="tag">API</span>
+                <span class="tag">Utility</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- E-COMMERCE APP CARD -->
+          <a href="#"
+             class="card gradient-3"
+             data-title="E-Commerce App"
+             data-desc="A modern shopping experience with smooth navigation and fast product browsing. Users can explore items, view details, and add products to the cart seamlessly. Focused on delivering a clean layout with a premium flow. Designed for brands and stores that want a high-quality presence.">
+            <img class="card-thumb" src="image3.jpeg" alt="E-Commerce App" />
+            <div class="card-body">
+              <h3>E-Commerce App</h3>
+              <p>Shop with a clean experience.</p>
+              <div class="tags">
+                <span class="tag">Store</span>
+                <span class="tag">UI/UX</span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- POPUP MODAL -->
+  <div class="modal" id="projectModal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    const modal = document.getElementById("projectModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDesc = document.getElementById("modalDesc");
+    const closeBtn = document.querySelector(".close-modal");
+
+    document.querySelectorAll(".card").forEach(card => {
+      card.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        modalTitle.textContent = card.dataset.title;
+        modalDesc.textContent = card.dataset.desc;
+
+        modal.style.display = "flex";
+      });
+    });
+
+    closeBtn.onclick = () => (modal.style.display = "none");
+    window.onclick = e => {
+      if (e.target === modal) modal.style.display = "none";
+    };
+  </script>
+
+</body>
+</html>
